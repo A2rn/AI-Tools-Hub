@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tool Details</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .detail-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .detail-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    .detail-content {
+      padding: 20px;
+    }
+    .detail-title {
+      font-size: 2rem;
+      color: #4e54c8;
+      margin-bottom: 10px;
+    }
+    .detail-desc {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    .detail-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .detail-categories span {
+      background-color: #eef1ff;
+      color: #4e54c8;
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+    }
+    .button-group a {
+      background-color: #4e54c8;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: background-color 0.3s;
+    }
+    .button-group a:hover {
+      background-color: #8f94fb;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Tools Hub</h1>
+    <p>Tool details</p>
+  </header>
+  <div class="detail-container" id="toolContainer"></div>
+  <footer>
+    <p>&copy; <span id="year"></span> AI Tools Hub. All rights reserved.</p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const yearSpan = document.getElementById('year');
+      yearSpan.textContent = new Date().getFullYear();
+      const container = document.getElementById('toolContainer');
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      if (!id) {
+        container.innerHTML = '<p style="padding:20px;">No tool specified.</p>';
+        return;
+      }
+      // Embed data directly so the page works over file:// protocol
+      const tools = [
+        {
+          id: 'chatgpt',
+          name: 'ChatGPT',
+          categories: ['ChatBot', 'Writing', 'Education'],
+          description: 'ChatGPT is an AI language model that can answer questions, write essays and stories, and converse on a wide range of topics. It is popular with students and professionals for tutoring, brainstorming and content creation.',
+          affiliate: 'https://openai.com',
+          image: 'images/chatgpt.png'
+        },
+        {
+          id: 'jasper',
+          name: 'Jasper AI',
+          categories: ['Writing', 'Marketing', 'Content'],
+          description: 'Jasper is an AI writing assistant that helps marketers, bloggers and businesses generate articles, emails and advertising copy. It leverages large language models to produce marketing copy quickly, with templates for blogs, product descriptions and social media posts.',
+          affiliate: 'https://www.jasper.ai',
+          image: 'images/jasper.png'
+        },
+        {
+          id: 'synthesia',
+          name: 'Synthesia',
+          categories: ['Video', 'Marketing', 'Avatar'],
+          description: 'Synthesia is a platform that uses AI to turn written scripts into videos with talking digital avatars. Users can create training, marketing or explainer videos without cameras or actors.',
+          affiliate: 'https://www.synthesia.io',
+          image: 'images/synthesia.png'
+        },
+        {
+          id: 'murf',
+          name: 'Murf AI',
+          categories: ['Voice', 'Audio', 'Narration'],
+          description: 'Murf is an AI voice generator that transforms text into natural‑sounding speech. It offers a library of voices in multiple languages and tones, making it useful for creating voiceovers for videos, presentations and podcasts.',
+          affiliate: 'https://murf.ai',
+          image: 'images/murf.png'
+        },
+        {
+          id: 'canva',
+          name: 'Canva',
+          categories: ['Design', 'Image Editing', 'Presentation'],
+          description: 'Canva is an online design tool that offers drag‑and‑drop templates for presentations, posters, social media posts and more. It integrates AI‑powered features like Magic Design and background removal to help users create professional graphics without design experience.',
+          affiliate: 'https://www.canva.com',
+          image: 'images/canva.png'
+        }
+      ];
+      const tool = tools.find(t => t.id === id);
+      if (!tool) {
+        container.innerHTML = '<p style="padding:20px;">Tool not found.</p>';
+        return;
+      }
+      // Build detail view
+      const img = document.createElement('img');
+      img.className = 'detail-img';
+      img.src = tool.image;
+      img.alt = tool.name;
+      const content = document.createElement('div');
+      content.className = 'detail-content';
+      const title = document.createElement('h2');
+      title.className = 'detail-title';
+      title.textContent = tool.name;
+      const desc = document.createElement('p');
+      desc.className = 'detail-desc';
+      desc.textContent = tool.description;
+      const catContainer = document.createElement('div');
+      catContainer.className = 'detail-categories';
+      tool.categories.forEach(cat => {
+        const span = document.createElement('span');
+        span.textContent = cat;
+        catContainer.appendChild(span);
+      });
+      const buttonGroup = document.createElement('div');
+      buttonGroup.className = 'button-group';
+      const visitLink = document.createElement('a');
+      visitLink.href = tool.affiliate;
+      visitLink.target = '_blank';
+      visitLink.rel = 'noopener noreferrer';
+      visitLink.textContent = 'Visit Official Site';
+      const backLink = document.createElement('a');
+      backLink.href = 'index.html';
+      backLink.textContent = 'Back to Home';
+      buttonGroup.appendChild(visitLink);
+      buttonGroup.appendChild(backLink);
+      content.appendChild(title);
+      content.appendChild(desc);
+      content.appendChild(catContainer);
+      content.appendChild(buttonGroup);
+      container.appendChild(img);
+      container.appendChild(content);
+    });
+  </script>
+</body>
+</html>

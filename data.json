@@ -1,0 +1,42 @@
+[
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "categories": ["ChatBot", "Writing", "Education"],
+    "description": "ChatGPT is an AI language model that can answer questions, write essays and stories, and converse on a wide range of topics. It is popular with students and professionals for tutoring, brainstorming and content creation.",
+    "affiliate": "https://openai.com",  
+    "image": "images/chatgpt.png"
+  },
+  {
+    "id": "jasper",
+    "name": "Jasper AI",
+    "categories": ["Writing", "Marketing", "Content"],
+    "description": "Jasper is an AI writing assistant that helps marketers, bloggers and businesses generate articles, emails and advertising copy. It leverages large language models to produce marketing copy quickly, with templates for blogs, product descriptions and social media posts.",
+    "affiliate": "https://www.jasper.ai",  
+    "image": "images/jasper.png"
+  },
+  {
+    "id": "synthesia",
+    "name": "Synthesia",
+    "categories": ["Video", "Marketing", "Avatar"],
+    "description": "Synthesia is a platform that uses AI to turn written scripts into videos with talking digital avatars. Users can create training, marketing or explainer videos without cameras or actors.",
+    "affiliate": "https://www.synthesia.io",  
+    "image": "images/synthesia.png"
+  },
+  {
+    "id": "murf",
+    "name": "Murf AI",
+    "categories": ["Voice", "Audio", "Narration"],
+    "description": "Murf is an AI voice generator that transforms text into natural‑sounding speech. It offers a library of voices in multiple languages and tones, making it useful for creating voiceovers for videos, presentations and podcasts.",
+    "affiliate": "https://murf.ai",  
+    "image": "images/murf.png"
+  },
+  {
+    "id": "canva",
+    "name": "Canva",
+    "categories": ["Design", "Image Editing", "Presentation"],
+    "description": "Canva is an online design tool that offers drag‑and‑drop templates for presentations, posters, social media posts and more. It integrates AI‑powered features like Magic Design and background removal to help users create professional graphics without design experience.",
+    "affiliate": "https://www.canva.com",  
+    "image": "images/canva.png"
+  }
+]
